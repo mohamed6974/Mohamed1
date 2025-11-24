@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ذكرياتنا</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Tahoma", sans-serif;
+    background: #ffd1e8;
+  }
+
+  /* صفحة الغلاف */
+  #cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 18px;
+    text-align: center;
+  }
+
+  #cover img {
+    width: 80%;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    margin-bottom: 18px;
+  }
+
+  #cover h1 {
+    color: #c20063;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    padding: 12px 26px;
+    background: #ff2b85;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-size: 18px;
+  }
+
+  /* شاشة الباسورد */
+  #password-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #password-screen h2 {
+    font-size: 26px;
+    color: #d6006f;
+    margin-bottom: 16px;
+  }
+
+  input {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    width: 70%;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  /* الذكريات */
+  #memories {
+    display: none;
+    padding: 18px;
+  }
+
+  #memories h1 {
+    text-align: center;
+    color: #c20063;
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .memory {
+    background: white;
+    border-radius: 18px;
+    padding: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  }
+
+  .memory img {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+
+  .date {
+    color: #ff2b85;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .text {
+    font-size: 16px;
+    color: #383838;
+  }
+
+  /* ====== جزء الكلام اللي بيظهر لوحده تحت بعض ====== */
+  .love-section {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px 10px 40px;
+  }
+
+  .love-title {
+    font-size: 32px;
+    color: #c20063;
+    margin-bottom: 18px;
+  }
+
+  .line {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #383838;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    margin: 4px 0;
+  }
+
+  .show {
+    opacity: 1;
+  }
+
+  .love-btn {
+    margin-top: 24px;
+    font-size: 18px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 999px;
+    background: #ff2b85;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .love-btn:active {
+    transform: scale(0.97);
+  }
+
+  .love-footer {
+    margin-top: 18px;
+    font-size: 18px;
+    color: #c20063;
+    opacity: 0.8;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- صفحة الغلاف -->
+<div id="cover">
+  <img src="https://i.postimg.cc/P5998DZy/IMG-20250921-WA0100.jpg" id="cover-img">
+  <h1>انا وروح قلبي 🌚 </h1>
+  <button class="btn" onclick="openPassword()">دخول</button>
+</div>
+
+<!-- شاشة الباسورد -->
+<div id="password-screen">
+  <h2>ادخل كلمة السر 💕</h2>
+  <input type="password" id="pass" placeholder="اكتب الباسورد هنا">
+  <button class="btn" onclick="checkPassword()">دخول</button>
+  <p id="error" style="color:red; margin-top:10px; display:none;">❌ الباسورد غلط</p>
+</div>
+
+<!-- الذكريات -->
+<div id="memories">
+  <h1>ذكرياتنا 💗</h1>
+
+  <!-- مثال ذكرى -->
+  <div class="memory">
+    <img src="https://i.postimg.cc/C5wxTXxz/IMG-20250924-WA0012.jpg">
+    <div class="text">طبعا دا انا اروش واحد ف الدنيا 😍☝🏻 💞</div>
+  </div>
+
+  <div class="memory">
+    <img src="https://i.postimg.cc/tgmcHxRT/IMG-20250923-WA0027.jpg">
+    <div class="text">وطبعا الحته بتاعتي 🌚♥️</div>
+  </div> 
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/SKz6J27Y/IMG-20250826-WA0043.jpg">
+    <div class="text">اكتر صوره بعشقها ليكي 🥹</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/rFxz01vw/IMG-20250803-WA0044(1).jpg">
+    <div class="date">1 / 8 / 2025</div>
+    <div class="text">ف اليوم دا كان أول مره اشوفك علي الحقيقه 😍🥹</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/WzPzXtZV/IMG-20250811-WA0046.jpg">
+    <div class="date">10 / 8 / 2025</div>
+    <div class="text">تاني مره اشوفك فيها وكنتي عروسه زي القمر 🥹😍</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/bJPdRskj/IMG-20250809-WA0053.jpg">
+    <div class="text">طبعا واجهه يبني مش محتاج كلام والله 😂♥️</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/wBFL3C7r/IMG-20250708-WA0050.jpg">
+    <div class="text">عروستي الي شوفتها قبل الكل 🙈💗</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/9fftPX5Z/IMG-20250613-WA0041.jpg">
+    <div class="date">23 / 5 / 2025</div>
+    <div class="text">اول صوره شوفتها ليكي وحبيتك اوي من ساعتها 😚</div>
+  </div>
+ 
+  <div class="memory">
+    <div class="date">0 / 0 / 2025</div>
+    <div class="text">طبعا في يوم مميز سهرنا فيه ومنمناش وطبقنا كمان وفضلنا نتكلم فوق ال24 ساعه متواصل واحنا ف الشات كان من احلي ايامي معاكي 🌚🌚🌚🌚🙈</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/c18HKpzj/IMG-20251124-165527.jpg">
+    
+    <div class="text">أما بنوتي وهي صغيره بقا  ف دي اجمل بنت ف الكون كله ربنا يخليكي ليا يروح قلب بابا 🥹♥️💗</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/Hs8dvbmR/IMG-20250921-WA0088.jpg">
+    
+    <div class="text">عقبال ما البسك الدبله وابوس ايدك 💍♥️</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/P5998DZy/IMG-20250921-WA0100.jpg">
+    <div class="date">21 / 9 / 2024</div>
+    <div class="text">طبعا اول خروجه لينا 🌚♥️</div>
+  </div>
+ 
+  <div class="memory">
+    <img src="https://i.postimg.cc/GpR1WLdQ/IMG-20250921-WA0092.jpg">
+    <div class="text">ايد مش ناقصها غير دبلتي بس 💍🌚</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/RVT8W7Bc/IMG-20251016-WA0074.jpg">
+    <div class="text">هدوء ما قبل العاصفه 😂</div>
+  </div>
+  
+  <div class="memory">
+    <img src="https://i.postimg.cc/vBWhpy81/IMG-20251027-WA0193.jpg">
+    
+    <div class="text">الجو الرومانسي وقعدتنا ع البحر 🌚🌊</div>
+  </div>
+
+  <div class="memory">
+    <img src="https://i.postimg.cc/63wb6qmF/IMG-20251027-WA0202.jpg">
+    
+    <div class="text">اي القمر والعسل دا يناس 😚🥹</div>
+  </div>
+
+  <div class="memory">
+    <img src="https://i.postimg.cc/3RSjMw5r/IMG-20251027-WA0195.jpg">
+    
+    <div class="text">ايش العيون الحلوه هاي 👀🌚</div>
+  </div>
+
+  <div class="memory">
+    <img src="https://i.postimg.cc/JnvqDhTf/IMG-20250921-WA0096.jpg">
+    
+    <div class="text">المره الجايه هضربك لو الكوتش اتوسخ 😡😂</div>
+  </div>
+
+
+  <!-- ====== هنا جزء الكلام اللي بيظهر لوحده ====== -->
+  <div class="love-section">
+    <div class="love-title">عايز اقولك حاجه اخيره بقا 🌚</div>
+    <div id="love-messages"></div>
+    <button class="love-btn" id="loveBtn">دوسي هنا 😡</button>
+    <div class="love-footer">MOHAMED♡REHAM</div>
+  </div>
+
+</div>
+
+<script>
+  function openPassword() {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("password-screen").style.display = "flex";
+  }
+
+  // غيّر الباسورد هنا
+  const correctPassword = "15/5";
+
+  function checkPassword() {
+    const input = document.getElementById("pass").value;
+    if (input === correctPassword) {
+      document.getElementById("password-screen").style.display = "none";
+      document.getElementById("memories").style.display = "block";
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  }
+
+  /* ====== سكربت الكلام اللي بيظهر لوحده بالترتيب ====== */
+  const loveLines = [
+    "بحبك اوي يروح قلبي ربنا يخليكي ليا",
+    "ومهما الدنيا تبعدنا هنفضل ديما سوا",
+    "انتي اغلي حاجه وكل حاجه ليا",
+    "مقدرش علي بعدك ولا اقدر علي زعلك",
+    "بحبكككككككك لاخر يوم ف عمري"
+  ];
+
+  let loveIndex = 0;
+  let lovePlaying = false;
+
+  const loveContainer = document.getElementById("love-messages");
+  const loveBtn = document.getElementById("loveBtn");
+
+  loveBtn.addEventListener("click", () => {
+    // أول مرة ندوس → يبتدي الكلام يطلع لوحده
+    if (!lovePlaying && loveIndex === 0 && loveContainer.childElementCount === 0) {
+      lovePlaying = true;
+      loveBtn.disabled = true;
+      startLove();
+    } else if (!lovePlaying) {
+      // restart
+      resetLove();
+    }
+  });
+
+  function startLove() {
+    if (loveIndex >= loveLines.length) {
+      lovePlaying = false;
+      loveBtn.disabled = false;
+      loveBtn.innerHTML = "restart";
+      return;
+    }
+
+    const p = document.createElement("p");
+    p.className = "line";
+    p.textContent = loveLines[loveIndex];
+    loveContainer.appendChild(p);
+
+    setTimeout(() => {
+      p.classList.add("show");
+    }, 50);
+
+    loveIndex++;
+
+    // السطر اللي بعده بعد 1.3 ثانية
+    setTimeout(startLove, 1300);
+  }
+
+  function resetLove() {
+    loveIndex = 0;
+    loveContainer.innerHTML = "";
+    loveBtn.innerHTML = " 😡دوسي هنا 😡";
+  }
+</script>
+
+</body>
+</html>
